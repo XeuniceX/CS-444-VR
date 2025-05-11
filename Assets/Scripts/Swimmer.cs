@@ -21,16 +21,17 @@ public class Swimmer : MonoBehaviour
 
     Rigidbody _rigidbody;
     float _cooldownTimer;
-
+    bool isSwimmingEnabled = false;
+    
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _rigidbody.useGravity = false;
         _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     void FixedUpdate()
     {
+        if (!isSwimmingEnabled) return; 
         _cooldownTimer += Time.fixedDeltaTime;
         if (_cooldownTimer > minTimeBetweenStrokes 
             && leftControllerSwimReference.action.IsPressed()
@@ -54,4 +55,15 @@ public class Swimmer : MonoBehaviour
             _rigidbody.AddForce(-_rigidbody.velocity * dragForce, ForceMode.Acceleration);
         }
     }
+    
+    public void SetSwimmingEnabled(bool enabled)
+    {
+        isSwimmingEnabled = enabled;
+    }
+    
+    public bool IsSwimmingEnabled()
+    {
+        return isSwimmingEnabled;
+    }
+
 }

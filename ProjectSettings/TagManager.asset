@@ -3,17 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SwimZone
+  - Craftable
+  - Screwdriver
+  - Axe
+  - Medicine
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - MirrorOnly
+  - Climbable
+  - ' Water Surface'
   - 
   - 
   - 

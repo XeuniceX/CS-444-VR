@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class SanityBarController : MonoBehaviour
 {
     public Image sanityBarImage; // Assign your Image here
-    public float decreaseAmount = 0.05f; // Amount to decrease per interval (0 to 1)
     public float decreaseInterval = 1f;  // Seconds between decreases
 
     private float timer = 0f;
@@ -21,11 +20,11 @@ public class SanityBarController : MonoBehaviour
         if (timer >= decreaseInterval)
         {
             timer = 0f;
-            DecreaseSanity();
+            DecreaseSanity(0.005f);
         }
     }
 
-    void DecreaseSanity()
+    public void DecreaseSanity(float decreaseAmount)
     {
         if (sanityBarImage.fillAmount > 0)
         {
@@ -39,4 +38,14 @@ public class SanityBarController : MonoBehaviour
             }
         }
     }
+    
+    public void IncreaseSanity(float increaseAmount)
+    {
+        sanityBarImage.fillAmount += increaseAmount;
+        if (sanityBarImage.fillAmount > 1f)
+            sanityBarImage.fillAmount = 1f;
+        Debug.Log("Sanity Increase ");
+        Debug.Log("Sanity: " + sanityBarImage.fillAmount);
+    }
+
 }
