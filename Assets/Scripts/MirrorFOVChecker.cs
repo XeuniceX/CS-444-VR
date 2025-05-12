@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class MirrorFOVChecker : MonoBehaviour
 {
     [Header("Camera to Check FOV")]
@@ -14,17 +13,16 @@ public class MirrorFOVChecker : MonoBehaviour
     public AudioSource audioSource;
     public Animator zombieAnimator;
     public SanityBarController sanityBarController;
-
-    private bool wasInFOVLastFrame = false; // Keeps track of previous frame
-    private bool currentlyScreaming = false; // Track if scream is playing
+    
+    private bool currentlyScreaming = false;
     private bool isDispelled = false;
     
     private float screamSanityTimer = 0f;
     private float screamSanityInterval = 1f;
 
-
     void Start()
     {
+        Debug.Log($"{gameObject.name} → Animator instance ID: {zombieAnimator.GetInstanceID()}");
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
@@ -43,7 +41,7 @@ public class MirrorFOVChecker : MonoBehaviour
 
     void Update()
     {
-        bool isInFOV = IsControllerInCameraFOV(leftController) || IsControllerInCameraFOV(rightController);
+        bool isInFOV = IsInMirrorFOV(leftController) || IsInMirrorFOV(rightController);
 
         if (isInFOV && !currentlyScreaming && !isDispelled)
         {
@@ -53,7 +51,7 @@ public class MirrorFOVChecker : MonoBehaviour
         {
             StopScreaming();
         }
-        
+
         if (currentlyScreaming && !isDispelled && sanityBarController != null)
         {
             screamSanityTimer += Time.deltaTime;
@@ -64,65 +62,65 @@ public class MirrorFOVChecker : MonoBehaviour
                 Debug.Log("Sanity Decreased from Screaming Monster");
             }
         }
-
-
-        wasInFOVLastFrame = isInFOV;
     }
 
-    void LateUpdate()
+    bool IsInMirrorFOV(Transform target)
     {
-        if (mirrorCamera != null)
-        {
-            mirrorCamera.Render();
-        }
-    }
-
-    bool IsControllerInCameraFOV(Transform controller)
-    {
-        if (controller == null || mirrorCamera == null)
+        if (target == null || mirrorCamera == null)
             return false;
 
-        Vector3 viewportPos = mirrorCamera.WorldToViewportPoint(controller.position);
+        // Use Unity's built-in frustum check
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(mirrorCamera);
+        Bounds targetBounds = new Bounds(target.position, Vector3.one * 0.1f); // Small bound around controller
 
-        float marginX = 0.2f;
-        float marginY = 0.3f;
+        // Make sure it's visible in the camera frustum
+        if (!GeometryUtility.TestPlanesAABB(planes, targetBounds))
+            return false;
 
-        return viewportPos.z > 0 &&
-               viewportPos.x >= marginX && viewportPos.x <= (1 - marginX) &&
-               viewportPos.y >= marginY && viewportPos.y <= (1 - marginY);
+        // Additionally make sure it's in front of the camera
+        Vector3 dirToTarget = (target.position - mirrorCamera.transform.position).normalized;
+        float dot = Vector3.Dot(mirrorCamera.transform.forward, dirToTarget);
+        if (dot < 0.7f) return false; // Narrow FOV tolerance
+
+        return true;
+    }
+
+    bool IsMirrorVisibleToPlayer()
+    {
+        Camera playerCamera = Camera.main; // or XR rig's camera
+
+        Plane[] playerFrustum = GeometryUtility.CalculateFrustumPlanes(playerCamera);
+        Bounds mirrorBounds = new Bounds(mirrorCamera.transform.position, Vector3.one * 0.5f); // Adjust size if needed
+
+        return GeometryUtility.TestPlanesAABB(playerFrustum, mirrorBounds);
     }
 
     void StartScreaming()
     {
         Debug.Log("Started Screaming");
-
         currentlyScreaming = true;
 
         if (audioSource != null && !audioSource.isPlaying)
         {
-            audioSource.loop = true;  // Force loop
+            audioSource.loop = true;
             audioSource.Play();
         }
 
         if (zombieAnimator != null)
         {
-            Debug.Log("Setting shouldscream true on zombie animator");
             zombieAnimator.SetBool("ShouldScream", true);
-            Debug.Log("Animator Should Scream: " + zombieAnimator.GetBool("ShouldScream"));
-            Debug.Log("current animator state: " + zombieAnimator.GetCurrentAnimatorStateInfo(0).IsName("mixamo_com"));
         }
     }
 
     void StopScreaming()
     {
         Debug.Log("Stopped Screaming");
-
         currentlyScreaming = false;
 
         if (audioSource != null && audioSource.isPlaying)
         {
             audioSource.Stop();
-            audioSource.loop = false; // Reset loop state if needed
+            audioSource.loop = false;
         }
 
         if (zombieAnimator != null)
@@ -143,20 +141,27 @@ public class MirrorFOVChecker : MonoBehaviour
 
     void DispelMonster()
     {
-        Debug.Log("S recognized! Dispelling the monster!");
+        if (isDispelled) return;
+
+        // Only dispel if visible in mirror
+        bool isInFOV = IsInMirrorFOV(leftController) || IsInMirrorFOV(rightController);
+        if (!isInFOV && !IsMirrorVisibleToPlayer()) return;
+
+        Debug.Log($"{gameObject.name} has been dispelled by S");
 
         isDispelled = true;
-
         currentlyScreaming = false;
 
         if (audioSource != null)
         {
+            audioSource.Stop();
             audioSource.loop = false;
         }
 
         if (zombieAnimator != null)
         {
             zombieAnimator.SetBool("ShouldScream", false);
+            zombieAnimator.SetTrigger("Dispel"); // Optional
         }
     }
 }
