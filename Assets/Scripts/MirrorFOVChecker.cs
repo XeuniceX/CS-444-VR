@@ -22,7 +22,6 @@ public class MirrorFOVChecker : MonoBehaviour
 
     void Start()
     {
-        Debug.Log($"{gameObject.name} → Animator instance ID: {zombieAnimator.GetInstanceID()}");
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
@@ -58,7 +57,7 @@ public class MirrorFOVChecker : MonoBehaviour
             if (screamSanityTimer >= screamSanityInterval)
             {
                 screamSanityTimer = 0f;
-                sanityBarController.DecreaseSanity(0.2f);
+                sanityBarController.DecreaseSanity(0.1f);
                 Debug.Log("Sanity Decreased from Screaming Monster");
             }
         }
@@ -90,7 +89,7 @@ public class MirrorFOVChecker : MonoBehaviour
         Camera playerCamera = Camera.main; // or XR rig's camera
 
         Plane[] playerFrustum = GeometryUtility.CalculateFrustumPlanes(playerCamera);
-        Bounds mirrorBounds = new Bounds(mirrorCamera.transform.position, Vector3.one * 0.5f); // Adjust size if needed
+        Bounds mirrorBounds = new Bounds(mirrorCamera.transform.position, Vector3.one * 1.0f); // Adjust size if needed
 
         return GeometryUtility.TestPlanesAABB(playerFrustum, mirrorBounds);
     }
@@ -141,7 +140,7 @@ public class MirrorFOVChecker : MonoBehaviour
 
     void DispelMonster()
     {
-        if (isDispelled) return;
+        if (isDispelled || !currentlyScreaming) return;
 
         // Only dispel if visible in mirror
         bool isInFOV = IsInMirrorFOV(leftController) || IsInMirrorFOV(rightController);
