@@ -15,6 +15,7 @@ public class SanityBarController : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.volume = 0.5f;
 
         if (sanityBarImage == null)
             Debug.LogError("Sanity Bar Image not assigned!");
@@ -30,7 +31,7 @@ public class SanityBarController : MonoBehaviour
         if (timer >= decreaseInterval)
         {
             timer = 0f;
-            DecreaseSanity(0.005f);
+            DecreaseSanity(0.0025f);
         }
     }
 

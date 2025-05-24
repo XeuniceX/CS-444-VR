@@ -5,18 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Samples/XR Interaction Toolkit/2.5.4/Starter Assets/DemoScene.unity
-    guid: 319dafa5c80f29f428dc1e0d03f04177
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Scene.unity
+    guid: dc9faf37252ff4a85a5edfebe3d10496
   - enabled: 1
     path: Assets/Scenes/Project Scene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/New Scene.unity
-    guid: e9822df9ffd7049579b5ce6883ab1ab9
-  - enabled: 0
-    path: Assets/Scenes/Yifan.unity
-    guid: b822bb9c9fb604540bde1d3ce657a601
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 26913579760f84fde8e8eab5ec2633ad, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: e45289beae866405c9681853e6eecb01, type: 2}

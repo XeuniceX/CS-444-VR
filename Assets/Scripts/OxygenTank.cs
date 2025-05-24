@@ -7,13 +7,15 @@ public class OxygenTank : MonoBehaviour
 
     public GameObject poolWall; // Assign the wall/plane blocking access to the pool
     public GameObject audioTrigger;
-
+    public AudioClip sound;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Oxygen"))
         {
             Debug.Log("Oxygen found");
-
+            
+            if (sound != null)
+                AudioSource.PlayClipAtPoint(sound, transform.position);
             // Destroy the oxygen tank object
             Destroy(other.gameObject);
 

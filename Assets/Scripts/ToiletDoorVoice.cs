@@ -1,29 +1,37 @@
 using UnityEngine;
+using TMPro;
+using System.Collections;
 
 public class ToiletDoorVoice : MonoBehaviour
 {
     public AudioClip entryClip;
     public AudioClip exitClip;
 
+    public TMP_Text entrySubtitle;
+    public TMP_Text exitSubtitle;
+    public float fadeDuration = 0.5f;
+
     private AudioSource audioSource;
     private bool hasPlayedEntry = false;
     private bool hasPlayedExit = false;
     private bool playerIsInside = false;
     private bool isPlayingRecording = false;
+    private Coroutine currentSequence;
 
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-        Debug.Log("DoorVoiceTrigger initialized");
+        audioSource.playOnAwake = false;
+
+        SetAlpha(entrySubtitle, 0f);
+        SetAlpha(exitSubtitle, 0f);
     }
 
     private void Update()
     {
-        // Check if a recording was playing but has now finished
         if (isPlayingRecording && !audioSource.isPlaying)
         {
             isPlayingRecording = false;
-            Debug.Log("Recording finished playing");
         }
     }
 
@@ -31,20 +39,14 @@ public class ToiletDoorVoice : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered trigger");
-            
-            // Mark player as inside FIRST
             playerIsInside = true;
-            
-            // Only play entry clip if it hasn't been played before and no recording is playing
+
             if (!hasPlayedEntry && !isPlayingRecording)
             {
-                Debug.Log("Playing entry clip");
-                audioSource.Stop();
-                audioSource.clip = entryClip;
-                audioSource.Play();
                 hasPlayedEntry = true;
                 isPlayingRecording = true;
+                if (currentSequence != null) StopCoroutine(currentSequence);
+                currentSequence = StartCoroutine(PlayClipWithSubtitle(entryClip, entrySubtitle));
             }
         }
     }
@@ -53,28 +55,66 @@ public class ToiletDoorVoice : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player exited trigger, playerIsInside=" + playerIsInside + ", isPlayingRecording=" + isPlayingRecording);
-            
-            // Only play exit clip if:
-            // 1. Player was inside
-            // 2. Exit clip hasn't been played before
-            // 3. No recording is currently playing
             if (playerIsInside && !hasPlayedExit && !isPlayingRecording)
             {
-                Debug.Log("Playing exit clip");
-                audioSource.Stop();
-                audioSource.clip = exitClip;
-                audioSource.Play();
                 hasPlayedExit = true;
                 isPlayingRecording = true;
+                if (currentSequence != null) StopCoroutine(currentSequence);
+                currentSequence = StartCoroutine(PlayClipWithSubtitle(exitClip, exitSubtitle));
             }
-            
-            // Mark player as outside AFTER deciding to play the clip
+
             playerIsInside = false;
         }
     }
 
-    // Add this method to your component and call it from the inspector for testing
+    private IEnumerator PlayClipWithSubtitle(AudioClip clip, TMP_Text subtitle)
+    {
+        if (clip != null && subtitle != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+            yield return FadeIn(subtitle);
+            yield return new WaitForSeconds(clip.length);
+            yield return FadeOut(subtitle);
+        }
+        isPlayingRecording = false;
+    }
+
+    private IEnumerator FadeIn(TMP_Text text)
+    {
+        yield return FadeText(text, 1f, fadeDuration);
+    }
+
+    private IEnumerator FadeOut(TMP_Text text)
+    {
+        yield return FadeText(text, 0f, fadeDuration);
+    }
+
+    private IEnumerator FadeText(TMP_Text text, float targetAlpha, float duration)
+    {
+        float startAlpha = text.color.a;
+        float timer = 0f;
+        Color c = text.color;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float alpha = Mathf.Lerp(startAlpha, targetAlpha, timer / duration);
+            text.color = new Color(c.r, c.g, c.b, alpha);
+            yield return null;
+        }
+        text.color = new Color(c.r, c.g, c.b, targetAlpha);
+    }
+
+    private void SetAlpha(TMP_Text text, float alpha)
+    {
+        if (text != null)
+        {
+            Color c = text.color;
+            text.color = new Color(c.r, c.g, c.b, alpha);
+        }
+    }
+
     public void ResetTrigger()
     {
         hasPlayedEntry = false;
@@ -82,6 +122,16 @@ public class ToiletDoorVoice : MonoBehaviour
         playerIsInside = false;
         isPlayingRecording = false;
         audioSource.Stop();
+
+        SetAlpha(entrySubtitle, 0f);
+        SetAlpha(exitSubtitle, 0f);
+
+        if (currentSequence != null)
+        {
+            StopCoroutine(currentSequence);
+            currentSequence = null;
+        }
+
         Debug.Log("Trigger has been reset");
     }
 }

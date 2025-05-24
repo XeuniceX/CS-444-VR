@@ -57,7 +57,7 @@ public class MirrorFOVChecker : MonoBehaviour
             if (screamSanityTimer >= screamSanityInterval)
             {
                 screamSanityTimer = 0f;
-                sanityBarController.DecreaseSanity(0.1f);
+                sanityBarController.DecreaseSanity(0.05f);
                 Debug.Log("Sanity Decreased from Screaming Monster");
             }
         }
