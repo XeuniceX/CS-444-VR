@@ -66,6 +66,9 @@
 - **Bathroom Basin & Mixer Tap**  
   [Cooke and Lewis Bathroom Set by anthony-baker1979 (CGTrader)](https://www.cgtrader.com/free-3d-models/interior/bathroom/cooke-and-lewis-bathroom-basins-and-mixer-tap)
 
+- **Oxygen Tank**
+  [Oxygen Tank by Ketshop (CGTrader)](https://www.cgtrader.com/free-3d-models/industrial/tool/oxygen-tank-62f1b728-5114-4714-86f7-fea2e52021d1)
+
 - **Red Pill Prop**  
   [Medical Pills by vals3d (CGTrader)](https://www.cgtrader.com/free-3d-models/science/medical/medical-pills-72b0db89-be9c-4253-b11c-62393c914dc7)  
   Used for sanity recovery interaction.
