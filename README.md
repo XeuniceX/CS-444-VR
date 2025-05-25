@@ -101,6 +101,8 @@
 - **Eating Sound Effect**  
   Downloaded from [Pixabay – Eating Sound](https://pixabay.com/sound-effects/eating-sound-effect-36186/)
 
+- **Carrying Sound Effect**  
+  Downloaded from [Pixabay – Carry Sound](https://pixabay.com/sound-effects/sound-effect-006-backpack-handling-278069/)
 ---
 
 ### 📚 Tutorials & References
