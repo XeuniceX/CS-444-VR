@@ -7,16 +7,16 @@
 ## 📌 Features
 
 - 🪞 **Mirror-Based Monsters**  
-  Enemies are only visible in mirrors, reacting to what the reflection sees—not the player directly.
+  Enemies dwell in the mirror dimension and are only visible through reflections.
 
 - 🧠 **Sanity System**  
-  A sanity meter, viewable only in mirrors, drains over time or when monsters appear. Pills help restore balance.
+  A sanity meter, viewable only in mirrors, drains over time or during encounters with mirror monsters. Pills help restore sanity.
 
 - ✍️ **Gesture-Based Combat**  
-  Draw an “S” midair using the controller trigger to dispel monsters. Gesture detection uses a 3D-adapted $1 recognizer.
+  Draw an “S” using the controller trigger to dispel monsters. Gesture detection uses a 3D-adapted $1 recognizer.
 
 - 🛠️ **Physical Crafting**  
-  Combine and shake object parts in-world to create key items (e.g., screwdriver for progression).
+  Combine objects by placing them close to each other and shaking vigorously.
 
 - 🏊 **Intuitive Swimming Controls**  
   Enter a pool zone and swim using realistic breaststroke-like motion with VR controllers.
@@ -39,11 +39,13 @@
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Unity 2022.3 or later
 - XR Plugin Management enabled
 - Oculus SDK installed and configured
 
 ### Installation
+
 1. Clone the repository.
 2. Open the project in Unity Hub.
 3. Connect an Oculus Quest via Link or build to device.
@@ -103,6 +105,7 @@
 
 - **Carrying Sound Effect**  
   Downloaded from [Pixabay – Carry Sound](https://pixabay.com/sound-effects/sound-effect-006-backpack-handling-278069/)
+
 ---
 
 ### 📚 Tutorials & References
@@ -128,13 +131,12 @@
 - **Mirror Setup**  
   Inspired by [BudGames – Mirror Tutorial in Unity](https://www.youtube.com/watch?v=3OkcTkdgC5A)
 
-
 ---
 
 ## 👨‍👩‍👧‍👦 Team
 
 | Name                    |
-|-------------------------|
+| ----------------------- |
 | **Chan Hin Wai Howell** |
 | **Lee Ern Qi Eunice**   |
 | **Wu Yifan**            |
@@ -154,4 +156,3 @@
 Thanks to our instructors, playtesters, and the open-source and asset community that made this project possible.
 
 ---
-
