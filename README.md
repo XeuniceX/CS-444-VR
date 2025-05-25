@@ -53,19 +53,72 @@
 
 ## 📦 Asset Credits
 
-### 3D Models
-- **Mirror-Based Monster Animation** - [Maynard-Mixamo by Vladislav Cvijovic](https://www.artstation.com/artwork/q9AWRy)
+### 🧱 3D Models
 
-### Sound & Audio
-- **Creepy "Hello"** - Extracted from [audioadventure90](https://www.youtube.com/shorts/h-rBf88Jhdw)
-- **Creepy Laughter** - Extracted from [afroninjamedia](https://www.youtube.com/shorts/lA401IpD3Qs)
+- **Mirror-Based Monster Animation**  
+  [Maynard-Mixamo by Vladislav Cvijovic (ArtStation)](https://www.artstation.com/artwork/q9AWRy)  
+  Used for the mirror monster character and animation behavior.
 
-### Tutorials & References
-- **Gesture Recognition ($1 Recognizer)** – [University of Washington $1 Recognizer](https://depts.washington.edu/madlab/proj/dollar/)  
-- **Swimming Mechanic** – Inspired by VR velocity-based motion tutorials from [Justin P Barnett](https://www.youtube.com/watch?v=ViQzKZvYdgE)  
-- **Mirror Vision Logic** – Based on Unity's [`GeometryUtility.CalculateFrustumPlanes`](https://docs.unity3d.com/ScriptReference/GeometryUtility.CalculateFrustumPlanes.html) and dot product visibility math
-- **Tutorial Start Menu** - Inspired by VR start menu tutorial from [Valem](https://www.youtube.com/watch?v=6WfowlZ51i8&t=323s)
-- **Mirror Setup** - Inspired by Mirror Creation in Unity tutorial from [BudGames](https://www.youtube.com/watch?v=3OkcTkdgC5A)
+- **Bathtub**  
+  [Bathtub by talgat92 (CGTrader)](https://www.cgtrader.com/free-3d-models/interior/bathroom/bathtub-7be0c48a-30c2-4398-96aa-e02c888b4c48)  
+  Used in the bathroom scene layout.
+
+- **Bathroom Basin & Mixer Tap**  
+  [Cooke and Lewis Bathroom Set by anthony-baker1979 (CGTrader)](https://www.cgtrader.com/free-3d-models/interior/bathroom/cooke-and-lewis-bathroom-basins-and-mixer-tap)
+
+- **Red Pill Prop**  
+  [Medical Pills by vals3d (CGTrader)](https://www.cgtrader.com/free-3d-models/science/medical/medical-pills-72b0db89-be9c-4253-b11c-62393c914dc7)  
+  Used for sanity recovery interaction.
+
+- **Worn Key Prop**  
+  [Worn Key by MrWolf (CGTrader)](https://www.cgtrader.com/free-3d-models/household/other/worn-key-730dba2058ea7346f8855d825410d1c7)
+
+- **Kitchen & Living Room Assets**  
+  Various furniture and props sourced using the [BlenderKit Plugin](https://www.blenderkit.com/asset-gallery?query=category_subtree:model%20order:-created)
+
+---
+
+### 🔊 Sound & Audio Effects
+
+- **“Hello” Voice Line**  
+  Extracted from [audioadventure90 (YouTube Shorts)](https://www.youtube.com/shorts/h-rBf88Jhdw)
+
+- **Creepy Male Laughter**  
+  Extracted from [afroninjamedia (YouTube Shorts)](https://www.youtube.com/shorts/lA401IpD3Qs)
+
+- **Creepy Girl Laughter**  
+  Extracted from [LARASHORRORSOUNDS (YouTube)](https://www.youtube.com/watch?v=3OkcTkdgC5A)
+
+- **“I See You” Voice Clip**  
+  Extracted from [Sound Effect Database (YouTube)](https://www.youtube.com/watch?v=pUDFTYkk0rk)
+
+- **Splash Sound Effect**  
+  Extracted from [QualityControlledInstrumentals (YouTube)](https://www.youtube.com/watch?v=bpBLyDZRJDU)
+
+- **Eating Sound Effect**  
+  Downloaded from [Pixabay – Eating Sound](https://pixabay.com/sound-effects/eating-sound-effect-36186/)
+
+---
+
+### 📚 Tutorials & References
+
+- **Gesture Recognition ($1 Unistroke Recognizer)**  
+  [University of Washington – $1 Recognizer](https://depts.washington.edu/madlab/proj/dollar/)  
+  Used to detect drawn “S” gestures in 3D via 2D projection.
+
+- **Swimming Mechanic**  
+  Inspired by [Justin P Barnett – Swimming in VR](https://www.youtube.com/watch?v=ViQzKZvYdgE)  
+  Custom implementation based on controller velocity.
+
+- **Mirror FOV Logic**  
+  Based on Unity’s [`GeometryUtility.CalculateFrustumPlanes`](https://docs.unity3d.com/ScriptReference/GeometryUtility.CalculateFrustumPlanes.html) with dot product checks for precise mirror visibility detection.
+
+- **Tutorial Start Menu**  
+  Inspired by [Valem – XR VR Start Menu Tutorial](https://www.youtube.com/watch?v=6WfowlZ51i8&t=323s)
+
+- **Mirror Setup**  
+  Inspired by [BudGames – Mirror Tutorial in Unity](https://www.youtube.com/watch?v=3OkcTkdgC5A)
+
 
 ---
 
@@ -84,12 +137,6 @@
 - Added a **tutorial scene** with instructional TV screens showing real-life videos of controller usage
 - Clarified gesture and crafting mechanics using visual and particle feedback
 - Refined pool entry logic and movement cooldowns for realism
-
----
-
-## 📜 License
-
-This project is for academic and non-commercial use only. All credited assets retain their original licenses as per their sources.
 
 ---
 
