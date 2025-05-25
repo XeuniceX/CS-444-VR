@@ -87,7 +87,7 @@
   Extracted from [afroninjamedia (YouTube Shorts)](https://www.youtube.com/shorts/lA401IpD3Qs)
 
 - **Creepy Girl Laughter**  
-  Extracted from [LARASHORRORSOUNDS (YouTube)](https://www.youtube.com/watch?v=3OkcTkdgC5A)
+  Extracted from [LARASHORRORSOUNDS (YouTube Shorts)](https://www.youtube.com/shorts/pOyul7ASRt0)
 
 - **“I See You” Voice Clip**  
   Extracted from [Sound Effect Database (YouTube)](https://www.youtube.com/watch?v=pUDFTYkk0rk)
