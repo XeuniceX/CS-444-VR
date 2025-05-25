@@ -29,7 +29,7 @@
 ## 🛠️ Technologies
 
 - **Engine**: Unity 2022.3 (URP)
-- **Platform**: Oculus Quest (Standalone)
+- **Platform**: Oculus Quest 1 (Standalone)
 - **Frameworks**: Unity XR Interaction Toolkit (v2.3)
 - **Gesture Recognition**: Adapted $1 Unistroke Recognizer
 - **Physics**: Rigidbody-based custom movement for swimming and interaction
@@ -54,13 +54,18 @@
 ## 📦 Asset Credits
 
 ### 3D Models
+- **Mirror-Based Monster Animation** - [Maynard-Mixamo by Vladislav Cvijovic](https://www.artstation.com/artwork/q9AWRy)
 
 ### Sound & Audio
+- **Creepy "Hello"** - Extracted from [audioadventure90](https://www.youtube.com/shorts/h-rBf88Jhdw)
+- **Creepy Laughter** - Extracted from [afroninjamedia](https://www.youtube.com/shorts/lA401IpD3Qs)
 
 ### Tutorials & References
 - **Gesture Recognition ($1 Recognizer)** – [University of Washington $1 Recognizer](https://depts.washington.edu/madlab/proj/dollar/)  
-- **Swimming Mechanic** – Inspired by VR velocity-based motion tutorials from [Valem](https://www.youtube.com/c/ValemVR)  
+- **Swimming Mechanic** – Inspired by VR velocity-based motion tutorials from [Justin P Barnett](https://www.youtube.com/watch?v=ViQzKZvYdgE)  
 - **Mirror Vision Logic** – Based on Unity's [`GeometryUtility.CalculateFrustumPlanes`](https://docs.unity3d.com/ScriptReference/GeometryUtility.CalculateFrustumPlanes.html) and dot product visibility math
+- **Tutorial Start Menu** - Inspired by VR start menu tutorial from [Valem](https://www.youtube.com/watch?v=6WfowlZ51i8&t=323s)
+- **Mirror Setup** - Inspired by Mirror Creation in Unity tutorial from [BudGames](https://www.youtube.com/watch?v=3OkcTkdgC5A)
 
 ---
 
