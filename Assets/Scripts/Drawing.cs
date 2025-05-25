@@ -22,12 +22,6 @@ public class AirSketchWithS : MonoBehaviour
 
     public static System.Action OnSRecognized;
 
-    // You can re-enable template recording by uncommenting the lines below:
-    // [Header("Template Recording")]
-    // [SerializeField] private bool     recordTemplates = true;
-    // private const int TEMPLATE_COUNT = 10;
-    // private const float RECORD_GAP   = 2f;
-
     // ────────────────────────────────── runtime vars
     private LineRenderer               currentLine;
     private Vector3                    lastPoint;
@@ -38,10 +32,6 @@ public class AirSketchWithS : MonoBehaviour
 
     private DrawingActions             inputActions;
     private DollarRecognizer           dollar;
-
-    // Uncomment these to re-enable custom template storage:
-    // private readonly List<Vector2[]>   customTemplates = new();
-    // private float                      lastRecordTime  = -Mathf.Infinity;
 
     void Awake()
     {
@@ -132,9 +122,6 @@ public class AirSketchWithS : MonoBehaviour
         // store for recognition
         accumulated.AddRange(strokePoints);
 
-        // recording disabled by default—uncomment TryRecordTemplate() and related fields to re-enable
-        // TryRecordTemplate();
-
         // perform recognition
         bool isS = RecogniseS(accumulated);
         Debug.Log(isS
@@ -154,24 +141,6 @@ public class AirSketchWithS : MonoBehaviour
         currentLine.positionCount++;
         currentLine.SetPosition(currentLine.positionCount - 1, worldPos);
     }
-
-    // Recording helpers (commented out below)
-    /*
-    private void TryRecordTemplate()
-    {
-        if (!recordTemplates) return;
-        if (customTemplates.Count >= TEMPLATE_COUNT) return;
-        if (Time.time - lastRecordTime < RECORD_GAP) return;
-
-        Vector2[] pts2D = ProjectTo2D(accumulated);
-        customTemplates.Add(pts2D);
-        lastRecordTime = Time.time;
-        Debug.Log($"Recorded template {customTemplates.Count}/{TEMPLATE_COUNT}");
-
-        if (customTemplates.Count == TEMPLATE_COUNT)
-            SaveTemplatesToFile();
-    }
-    */
 
     private Vector2[] ProjectTo2D(List<Vector3> raw)
     {
