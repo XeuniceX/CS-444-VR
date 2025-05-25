@@ -81,6 +81,9 @@
 - **Kitchen & Living Room Assets**  
   Various furniture and props sourced using the [BlenderKit Plugin](https://www.blenderkit.com/asset-gallery?query=category_subtree:model%20order:-created)
 
+-- **Screwdriver**
+  [Screwdriver pair of plastic needles Free 3D model(CGTrader)](https://www.cgtrader.com/free-3d-models/industrial/tool/screwdriver-0567e51c-e47b-4f34-b592-6f8ff658aa91)
+
 ---
 
 ### 🔊 Sound & Audio Effects
@@ -94,9 +97,6 @@
 - **Creepy Girl Laughter**  
   Extracted from [LARASHORRORSOUNDS (YouTube Shorts)](https://www.youtube.com/shorts/pOyul7ASRt0)
 
-- **“I See You” Voice Clip**  
-  Extracted from [Sound Effect Database (YouTube)](https://www.youtube.com/watch?v=pUDFTYkk0rk)
-
 - **Splash Sound Effect**  
   Extracted from [QualityControlledInstrumentals (YouTube)](https://www.youtube.com/watch?v=bpBLyDZRJDU)
 
@@ -105,6 +105,9 @@
 
 - **Carrying Sound Effect**  
   Downloaded from [Pixabay – Carry Sound](https://pixabay.com/sound-effects/sound-effect-006-backpack-handling-278069/)
+
+-- **Background Music**
+  Extracted from [ESNProductions (YouTube)](https://www.youtube.com/watch?v=svAspF0nxC0)
 
 ---
 
