@@ -111,6 +111,10 @@
   [University of Washington – $1 Recognizer](https://depts.washington.edu/madlab/proj/dollar/)  
   Used to detect drawn “S” gestures in 3D via 2D projection.
 
+- **Unity-Based $1 Unistroke Recognizer**  
+  [Unity-Specific $1 Recognizer](https://github.com/SteBeeGizmo/DollarUnity)  
+  Applied the $1 Unistroke Recognizer algorithm with our custom drawing mechanic, 2D plane fitting and custom S template.
+
 - **Swimming Mechanic**  
   Inspired by [Justin P Barnett – Swimming in VR](https://www.youtube.com/watch?v=ViQzKZvYdgE)  
   Custom implementation based on controller velocity.
